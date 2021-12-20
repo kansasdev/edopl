@@ -1,5 +1,4 @@
 ﻿
-using PieEatingNinjas.EIdReader.UWP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +10,9 @@ using Windows.Devices.SmartCards;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Networking.Proximity;
+using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Certificates;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -163,7 +164,23 @@ namespace edopl
                 }
                 if (lstCertificate.Count > 0)
                 {
+                    //preparation for PACE, moze kiedys ..
+                    /*
+                    using(SmartCardConnection scc = await card.ConnectAsync())
+                    {
+                        await card.GetAnswerToResetAsync();
+                        byte[] bInit = new byte[] { 0x00, 0xB0, 0x9C, 0x00, 0xDF };
+                        IBuffer bufReq = CryptographicBuffer.CreateFromByteArray(bInit);
+                        IBuffer bResp = await scc.TransmitAsync(bufReq);
 
+                        string resp = CryptographicBuffer.EncodeToHexString(bResp);
+                    }
+                    */
+
+                    foreach(Certificate cert in lstCertificate)
+                    {
+                        BuildLabel(cert);
+                    }
                 }
                 else
                 {
@@ -186,6 +203,65 @@ namespace edopl
                     CloseButtonText = "OK"
                 };
                 await cd.ShowAsync();
+            }
+        }
+
+        private void BuildLabel(Certificate cer)
+        {
+            //Authorization - podpis
+            //presence - tożsamość
+            //Authentication - uwierzytelnianie
+            int k = 0;
+            if(cer.Issuer.Contains("Authorization"))
+            {
+                tbAuthorizationCertificateFriendlyName.Text = cer.FriendlyName;
+                tbAuthorizationCertificateIssuedBy.Text = cer.Issuer;
+                tbAuthorizationCertificateIssuedTo.Text = cer.Subject[1].ToString();
+                if(cer.KeyUsages.DigitalSignature)
+                {
+                    tbAuthorizationCertificateKeyUsage.Text = "Podpis cyfrowy";
+                }
+                if(cer.KeyUsages.NonRepudiation)
+                {
+                    tbAuthorizationCertificateKeyUsage.Text = "Niezaprzeczalność";
+                }
+                tbAuthorizationCertificateValidFrom.Text = cer.ValidFrom.ToString("f");
+                tbAuthorizationCertificateValidTo.Text = cer.ValidTo.ToString("f");
+                                
+            }
+            else if(cer.Issuer.Contains("Authentication"))
+            {
+                tbAuthenticationCertificateFriendlyName.Text = cer.FriendlyName;
+                tbAuthenticationCertificateIssuedBy.Text = cer.Issuer;
+                tbAuthenticationCertificateIssuedTo.Text = cer.Subject[1].ToString();
+                if (cer.KeyUsages.DigitalSignature)
+                {
+                    tbAuthenticationCertificateKeyUsage.Text = "Podpis cyfrowy";
+                }
+                if (cer.KeyUsages.NonRepudiation)
+                {
+                    tbAuthenticationCertificateKeyUsage.Text = "Niezaprzeczalność";
+                }
+                tbAuthenticationCertificateValidFrom.Text = cer.ValidFrom.ToString("f");
+                tbAuthenticationCertificateValidTo.Text = cer.ValidTo.ToString("f");
+
+            }
+            else if(cer.Issuer.Contains("Presence"))
+            {
+                tbPresenceCertificateFriendlyName.Text = cer.FriendlyName;
+                tbPresenceCertificateIssuedBy.Text = cer.Issuer;
+                tbPresenceCertificateIssuedTo.Text = cer.Subject[1].ToString();
+                if (cer.KeyUsages.DigitalSignature)
+                {
+                    tbPresenceCertificateKeyUsage.Text = "Podpis cyfrowy";
+                }
+                if (cer.KeyUsages.NonRepudiation)
+                {
+                    tbPresenceCertificateKeyUsage.Text = "Niezaprzeczalność";
+                }
+                tbPresenceCertificateValidFrom.Text = cer.ValidFrom.ToString("f");
+                tbPresenceCertificateValidTo.Text = cer.ValidTo.ToString("f");
+
             }
         }
     }

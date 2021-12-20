@@ -33,21 +33,107 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="14" Text="CERTYFIKAT OBECNOŚCI" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Przyjazna nazwa: " Margin="5"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tbPresenceCertificateFriendlyName" Margin="5" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Wystawca: " Margin="5"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tbPresenceCertificateIssuedBy" Margin="5" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Wystawiony dla: " Margin="5"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="tbPresenceCertificateIssuedTo" Margin="5" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Ważny od: " Margin="5"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="tbPresenceCertificateValidFrom" Margin="5" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Ważny do: " Margin="5"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="tbPresenceCertificateValidTo" Margin="5" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Użycie certyfikatu: " Margin="5"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="tbPresenceCertificateKeyUsage" Margin="5" />
+
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="14" Text="CERTYFIKAT PODPISU" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Przyjazna nazwa: " Margin="5"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tbSignCertificateFriendlyName" Margin="5" />
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tbAuthorizationCertificateFriendlyName" Margin="5" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Wystawca: " Margin="5"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tbSignCertificateIssuedBy" Margin="5" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tbAuthorizationCertificateIssuedBy" Margin="5" />
 
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Wystawiony dla: " Margin="5"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="tbSignCertificateIssuedTo" Margin="5" />
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="tbAuthorizationCertificateIssuedTo" Margin="5" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Ważny od: " Margin="5"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="tbAuthorizationCertificateValidFrom" Margin="5" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Ważny do: " Margin="5"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="tbAuthorizationCertificateValidTo" Margin="5" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Użycie certyfikatu: " Margin="5"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="tbAuthorizationCertificateKeyUsage" Margin="5" />
 
         </Grid>
-        
+
+        <Grid Grid.Row="0" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="14" Text="CERTYFIKAT IDENTYFIKACJI I UWIERZYTELNIANIA" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Przyjazna nazwa: " Margin="5"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tbAuthenticationCertificateFriendlyName" Margin="5" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Wystawca: " Margin="5"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tbAuthenticationCertificateIssuedBy" Margin="5" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Wystawiony dla: " Margin="5"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="tbAuthenticationCertificateIssuedTo" Margin="5" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Ważny od: " Margin="5"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="tbAuthenticationCertificateValidFrom" Margin="5" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Ważny do: " Margin="5"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="tbAuthenticationCertificateValidTo" Margin="5" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Użycie certyfikatu: " Margin="5"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="tbAuthenticationCertificateKeyUsage" Margin="5" />
+
+        </Grid>
+
         <ProgressBar x:Name="pbProgress" IsIndeterminate="True" Visibility="Collapsed" Grid.ColumnSpan="3" Grid.Row="0"/>
         <Button x:Name="btnOdczytajCertyfikaty" Grid.Row="1" Margin="5" FontSize="14" Content="Odczytaj certyfikaty" FontWeight="Bold" Grid.Column="2" VerticalAlignment="Top" Click="btnOdczytajCertyfikaty_Click"/>
         <Button x:Name="btnInitialize" Grid.Row="1" Margin="5" FontSize="14" Content="Inicjalizuj" FontWeight="Bold" Grid.Column="3" VerticalAlignment="Top" Click="Button_Click"/>
